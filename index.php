@@ -5,19 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
     <script src="functions.js"></script>
-
-    <script type="text/javascript">
-      function canvasDrawPixel(ctx, x, y, r, g, b, a = 0) {
-        fS = ctx.fillStyle;
-        ctx.fillStyle = "rgba(" + r + ", " + g + "," + b + "," + a + ")";
-        ctx.fillRect(x, y, 1, 1);
-        ctx.fillStyle = fS;
-      }
-    </script>
   </head>
   <body>
     <canvas id="canvas" width="512" height="512"></canvas>
     <script>
+      // randomly draw pixels
       var canvas = document.getElementById('canvas');
       var ctx = canvas.getContext("2d");
       for(x = 0; x < 512; x++) {
