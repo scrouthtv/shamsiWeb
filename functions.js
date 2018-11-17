@@ -11,16 +11,19 @@ function canvasDrawPixel(ctx, x, y, r, g, b, a = 0) {
 
 class BarChart {
 
-  addDataEntry(id, content) {
-    if(entries.length != content.length)
-      throw "Content not matching"; // likely to change to an error code
-    if(id < minID)
-      throw "Below specified range";
-    else if(id > maxID)
-    maxID += 2;
-    entries[id] = content;
-    update();
+  // canvas context, width, height, array with contents
+  constructor(ctx, dataRows, minID = 0, maxID = 1) {
+    this.ctx = ctx;
+    this.width = ctx.canvas.width;
+    this.height = ctx.canvas.height;
+    this.dataRows = dataRows;
+    this.minID = minID;
+    this.maxID = maxID;
+    this.entries = new Array();
+    this.ctx.lineWidth = 2;
+    this.update();
   }
+
   update() {
     this.ctx.beginPath();
     this.ctx.moveTo(5, this.height - 15);
@@ -37,18 +40,19 @@ class BarChart {
     this.ctx.lineTo(this.width - 21, this.height - 11);
     this.ctx.strokeStyle = "black";
     this.ctx.stroke();
+    for (entry of this.entries) {
+      alert(entry);
+    }
   }
 
-  // canvas context, width, height, array with contents
-  constructor(ctx, dataRows, minID = 0, maxID = 1) {
-    this.ctx = ctx;
-    this.width = ctx.canvas.width;
-    this.height = ctx.canvas.height;
-    this.dataRows = dataRows;
-    this.minID = minID;
-    this.maxID = maxID;
-    this.entries = new Array();
-    this.ctx.lineWidth = 2;
-    this.update();
+  addDataEntry(id, content) {
+    if(entries.length != content.length)
+      throw "Content not matching"; // likely to change to an error code
+    if(id < minID)
+      throw "Below specified range";
+    else if(id > maxID)
+    maxID += 2;
+    entries[id] = content;
+    update();
   }
 }
