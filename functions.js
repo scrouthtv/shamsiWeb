@@ -22,9 +22,21 @@ class BarChart {
     update();
   }
   update() {
-    this.ctx.fillStyle = "rgb(0, 0, 0)";
-    this.ctx.fillRect(5, 5, 1, this.height - 10);
-    this.ctx.
+    this.ctx.beginPath();
+    this.ctx.moveTo(5, this.height - 15);
+    this.ctx.lineTo(5, 10);
+    this.ctx.moveTo(5, 9);
+    this.ctx.lineTo(1, 16);
+    this.ctx.moveTo(5, 9);
+    this.ctx.lineTo(9, 16);
+    this.ctx.moveTo(5, this.height - 15);
+    this.ctx.lineTo(this.width - 15, this.height - 15);
+    this.ctx.moveTo(this.width - 14, this.height - 15);
+    this.ctx.lineTo(this.width - 21, this.height - 19);
+    this.ctx.moveTo(this.width - 14, this.height - 15);
+    this.ctx.lineTo(this.width - 21, this.height - 11);
+    this.ctx.strokeStyle = "black";
+    this.ctx.stroke();
   }
 
   // canvas context, width, height, array with contents
@@ -36,6 +48,7 @@ class BarChart {
     this.minID = minID;
     this.maxID = maxID;
     this.entries = new Array();
+    this.ctx.lineWidth = 2;
     this.update();
   }
 }
