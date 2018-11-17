@@ -9,7 +9,7 @@ function canvasDrawPixel(ctx, x, y, r, g, b, a = 0) {
   ctx.fillStyle = fS;
 }
 
-class BarChart {
+class LineChart {
 
   // canvas context, width, height, array with contents
   constructor(ctx, dataRows, minID = 0, maxID = 1) {
@@ -40,8 +40,28 @@ class BarChart {
     this.ctx.lineTo(this.width - 21, this.height - 11);
     this.ctx.strokeStyle = "black";
     this.ctx.stroke();
-    for (entry of this.entries) {
-      alert(entry);
+
+    var max = Array.apply(null, {length: this.dataRows.length}).map(function() {return 0});
+    for (let id in this.entries) {
+      let points = this.entries[id];
+      for(let valID in points) {
+        if(points[valID] > max[valID])
+          max[valID] = points[valID];
+      }
+    }
+    var steps = new Array(); // in y values per 1 px
+    for(let cat in max) {
+      steps[cat] = max[cat] / (this.height + 10);
+      //steps[cat] = Math.round((max[cat] / (this.height + 10)) * 10000) / 10000; rounded
+    }
+    console.log(steps);
+
+    var last = new Array();
+    for (let id in this.entries) {
+      let points = this.entries[id];
+      for(let pnt in points) {
+        // draw them
+      }
     }
   }
 
@@ -53,6 +73,6 @@ class BarChart {
     else if(id > this.maxID)
     this.maxID += 2;
     this.entries[id] = content;
-    update();
+    this.update();
   }
 }

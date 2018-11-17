@@ -18,8 +18,11 @@
         //}
       //}
 
-      bC = new BarChart(document.getElementById('canvas').getContext("2d"), ["U"], 1, 15);
-      bC.addDataEntry(1, [15]);
+      lC = new LineChart(document.getElementById('canvas').getContext("2d"), ["U", "I"], 1, 15);
+      lC.addDataEntry(1, [15, 22]);
+      lC.addDataEntry(2, [20, 18]);
+      lC.addDataEntry(3, [18, 24]);
+      lC.addDataEntry(4, [20, 15]);
     </script>
   </body>
 </html>
