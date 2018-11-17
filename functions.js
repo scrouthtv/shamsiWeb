@@ -46,13 +46,13 @@ class BarChart {
   }
 
   addDataEntry(id, content) {
-    if(entries.length != content.length)
+    if(this.entries.length != content.length)
       throw "Content not matching"; // likely to change to an error code
-    if(id < minID)
+    if(id < this.minID)
       throw "Below specified range";
-    else if(id > maxID)
-    maxID += 2;
-    entries[id] = content;
+    else if(id > this.maxID)
+    this.maxID += 2;
+    this.entries[id] = content;
     update();
   }
 }
