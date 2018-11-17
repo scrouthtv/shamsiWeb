@@ -46,7 +46,7 @@ class BarChart {
   }
 
   addDataEntry(id, content) {
-    if(this.entries.length != content.length)
+    if(this.dataRows.length != content.length)
       throw "Content not matching"; // likely to change to an error code
     if(id < this.minID)
       throw "Below specified range";

@@ -18,7 +18,8 @@
         //}
       //}
 
-      bC = new BarChart(document.getElementById('canvas').getContext("2d"), ["U"])
+      bC = new BarChart(document.getElementById('canvas').getContext("2d"), ["U"], 1, 15);
+      bC.addDataEntry(1, [15]);
     </script>
   </body>
 </html>
