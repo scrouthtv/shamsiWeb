@@ -64,11 +64,13 @@ class LineChart {
   }
 
   getYCoord(val) {
-    return Math.floor(50);
+    let yStep = (this.height - 15) / (this.maxVal -  this.minVal);
+    return Math.floor(this.height - 15 - (yStep * val));
   }
 
   getXCoord(id) {
-    return Math.floor(5 + ((this.width + 10) / this.maxID) * id);
+    let xStep = (this.width - 15) / (this.maxID - this.minID);
+    return Math.floor(5 + xStep * id);
   }
 
   addDataEntry(id, content) {
