@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+    <title>TELL ME WHY</title>
     <script src="functions.js"></script>
   </head>
   <body>
@@ -23,6 +23,9 @@
       lC.addDataEntry(2, [15, 4]);
       lC.addDataEntry(3, [10, 2]);
       lC.addDataEntry(4, [25, 6]);
+      lC.addDataEntry(5, [40, 40]);
+      lC.addDataEntry(6, [25, 25]);
+      lC.addDataEntry(8, [5, 5]);
     </script>
   </body>
 </html>
