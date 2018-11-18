@@ -18,7 +18,7 @@
         //}
       //}
 
-      lC = new LineChart(document.getElementById('canvas').getContext("2d"), ["U", "I"], 1, 15);
+      lC = new LineChart(document.getElementById('canvas').getContext("2d"), ["U", "I"], 1, 15, 3, 10, true);
       lC.addDataEntry(1, [5, 2]);
       lC.addDataEntry(2, [15, 4]);
       lC.addDataEntry(3, [10, 2]);
