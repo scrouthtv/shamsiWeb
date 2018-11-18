@@ -19,10 +19,10 @@
       //}
 
       lC = new LineChart(document.getElementById('canvas').getContext("2d"), ["U", "I"], 1, 15);
-      lC.addDataEntry(1, [15, 22]);
-      lC.addDataEntry(2, [20, 18]);
-      lC.addDataEntry(3, [18, 24]);
-      lC.addDataEntry(4, [20, 15]);
+      lC.addDataEntry(1, [5, 2]);
+      lC.addDataEntry(2, [10, 4]);
+      lC.addDataEntry(3, [15, 6]);
+      lC.addDataEntry(4, [20, 8]);
     </script>
   </body>
 </html>

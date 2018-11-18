@@ -12,19 +12,22 @@ function canvasDrawPixel(ctx, x, y, r, g, b, a = 0) {
 class LineChart {
 
   // canvas context, width, height, array with contents
-  constructor(ctx, dataRows, minID = 0, maxID = 1) {
+  constructor(ctx, dataRows, minID = 0, maxID = 1, minVal = 0, maxVal = 50) {
     this.ctx = ctx;
     this.width = ctx.canvas.width;
     this.height = ctx.canvas.height;
     this.dataRows = dataRows;
     this.minID = minID;
     this.maxID = maxID;
+    this.minVal = minVal;
+    this.maxVal = maxVal;
     this.entries = new Array();
     this.ctx.lineWidth = 2;
     this.update();
   }
 
   update() {
+    this.ctx.lineWidth = 2;
     this.ctx.beginPath();
     this.ctx.moveTo(5, this.height - 15);
     this.ctx.lineTo(5, 10);
@@ -41,28 +44,31 @@ class LineChart {
     this.ctx.strokeStyle = "black";
     this.ctx.stroke();
 
-    var max = Array.apply(null, {length: this.dataRows.length}).map(function() {return 0});
-    for (let id in this.entries) {
-      let points = this.entries[id];
-      for(let valID in points) {
-        if(points[valID] > max[valID])
-          max[valID] = points[valID];
-      }
-    }
-    var steps = new Array(); // in y values per 1 px
-    for(let cat in max) {
-      steps[cat] = max[cat] / (this.height + 10);
-      //steps[cat] = Math.round((max[cat] / (this.height + 10)) * 10000) / 10000; rounded
-    }
-    console.log(steps);
-
-    var last = new Array();
+    var step = (this.maxVal - this.minVal) / (this.height + 10);
+    var last = Array. apply(null, {length: this.dataRows.length}).map(function() {return 0});
+    var lastID = 0;
+    this.ctx.lineWidth = 1;
     for (let id in this.entries) {
       let points = this.entries[id];
       for(let pnt in points) {
-        // draw them
+        this.ctx.beginPath();
+        this.ctx.moveTo(this.getXCoord(lastID), this.getYCoord(last[pnt]));
+        this.ctx.lineTo(this.getXCoord(id), this.getYCoord(points[pnt]));
+        this.ctx.stroke();
+        // height - step * last[pnt] + 15
       }
+      last = points;
+      lastID = id;
     }
+    console.log("---");
+  }
+
+  getYCoord(val) {
+    return Math.floor(50);
+  }
+
+  getXCoord(id) {
+    return Math.floor(5 + ((this.width + 10) / this.maxID) * id);
   }
 
   addDataEntry(id, content) {
