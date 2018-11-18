@@ -100,10 +100,7 @@ class LineChart {
           this.maxID = Math.max(id * 1.3, this.maxID);
           this.minVal = Math.floor(Math.min(val * 1.3, this.minVal));
           this.maxVal = Math.ceil(Math.max(val * 1.3, this.maxVal));
-          console.log(this.getYCoord(40));
           this.update();
-          this.ctx.fillStyle = "rgb(0, 0, 0)";
-          this.ctx.fillRect(200, 48, 5, 5);
         } else
           throw "Specified data is outside of boundaries";
     this.entries[id] = content;
@@ -116,6 +113,7 @@ class LineChart {
       this.ctx.beginPath();
       this.ctx.moveTo(this.getXCoord(this.lastID), this.getYCoord(this.last[data]));
       this.ctx.lineTo(this.getXCoord(id), this.getYCoord(content[data]));
+      console.log("line: " + this.getYCoord(this.last[data]) + " | " + this.getYCoord(content[data]));
       this.ctx.strokeStyle = "black"; // color per data row?
       this.ctx.stroke();
     }

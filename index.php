@@ -25,7 +25,7 @@
       lC.addDataEntry(4, [25, 6]);
       lC.addDataEntry(5, [40, 40]);
       lC.addDataEntry(6, [25, 25]);
-      lC.addDataEntry(8, [5, 5]);
+      lC.addDataEntry(7, [90, 90]);
     </script>
   </body>
 </html>
